@@ -34,7 +34,28 @@ class BinarySearchTree
     elsif !node.left && !node.right
       node.parent.right == node ? node.parent.right = nil : node.parent.left = nil
     elsif node.left && node.right
-      ##
+      r = maximum(node.left)
+
+      ##re-asigns parent's pointers
+      parent = node.parent
+      parent.left == node ? parent.left = r : parent.right = r
+
+      ##changes r's left pointers
+      #but first promote it's left child to take its place
+      if r.left
+        child = r.left
+        r.parent.left == r ? r.parent.left = child : r.parent.right = child
+        child.left = r.left
+        child.right = r.right
+      end
+
+      r.left = node.left
+      node.left.parent = r
+
+      ##changes r's right pointers
+      r.right = node.right
+      node.right.parent = r
+
     else
       if node.left
         new_node = node.left
@@ -50,6 +71,11 @@ class BinarySearchTree
 
   # helper method for #delete:
   def maximum(tree_node = @root)
+    if tree_node.right.nil?
+      return tree_node
+    else
+      return maximum(tree_node.right)
+    end
   end
 
   def depth(tree_node = @root)
