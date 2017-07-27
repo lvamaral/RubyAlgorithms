@@ -33,6 +33,18 @@ class BinarySearchTree
       nil
     elsif !node.left && !node.right
       node.parent.right == node ? node.parent.right = nil : node.parent.left = nil
+    elsif node.left && node.right
+      ##
+    else
+      if node.left
+        new_node = node.left
+        node.parent.left = new_node
+        new_node.parent = node.parent.left
+      else
+        new_node = node.right
+        node.parent.right = new_node
+        new_node.parent = node.parent.right
+      end
     end
   end
 
