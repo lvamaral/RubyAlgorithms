@@ -1,4 +1,5 @@
 require 'bst_node'
+require 'byebug'
 # There are many ways to implement these methods, feel free to add arguments
 # to methods as you see fit, or to create helper methods.
 
@@ -79,9 +80,41 @@ class BinarySearchTree
   end
 
   def depth(tree_node = @root)
+    depth = 0
+    if tree_node.nil? || tree_node.left.nil? && tree_node.right.nil?
+      return depth
+    else
+      depth += 1
+      return depth + [depth(tree_node.left), depth(tree_node.right)].max
+    end
   end
 
   def is_balanced?(tree_node = @root)
+    # return false if tree_node.nil?
+    if tree_node.left
+      left_depth = depth(tree_node.left)
+    else
+      left_depth = 0
+    end
+
+    if tree_node.right
+      right_depth = depth(tree_node.right)
+    else
+      right_depth = 0
+    end
+
+    if (right_depth - left_depth).abs > 1
+      return false
+    elsif tree_node.right && tree_node.left
+      return is_balanced?(tree_node.right) && is_balanced?(tree_node.left)
+    else
+      if tree_node.right
+        return is_balanced?(tree_node.right)
+      elsif tree_node.left
+        return is_balanced?(tree_node.left)
+      end
+      return true
+    end
   end
 
   def in_order_traversal(tree_node = @root, arr = [])
