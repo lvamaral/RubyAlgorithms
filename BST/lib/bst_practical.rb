@@ -1,6 +1,22 @@
+require 'binary_search_tree'
+
 def kth_largest(tree_node, k)
+  results = kth_largest_search(tree_node, k, arr = [])
 end
-# -----------
+
+def kth_largest_search(tree_node, k, arr = [])
+  if tree_node
+    kth_largest_search(tree_node.right, k, arr)
+    return arr[-1] if arr.length == k
+    arr.push(tree_node)
+    return arr[-1] if arr.length == k
+    kth_largest_search(tree_node.left, k, arr)
+    return arr[-1] if arr.length == k
+    arr
+  end
+end
+
+
 def hasPathWithGivenSum(t, s)
    # Return true if we run out of tree and s = 0
     if t.nil? || t.value.nil?
@@ -41,17 +57,11 @@ def isTreeSymmetric(t)
 end
 
 def isMirror(left,right)
-   if left.nil? && right.nil?
-      return true
-   end
-   if !left.nil? && !right.nil?
-      if left.value == right.value
-         return (isMirror(left.left, right.right) &&
-                isMirror(left.right, right.left))
-      end
-   end
-   return false
+   return true if left.nil? && right.nil?
+   return false if left.nil? || right.nil? || left.value != right.value
+   isMirror(left.left, right.right) && isMirror(left.right, right.left)
 end
+
 
 # in JS
 # function check(t1, t2) {

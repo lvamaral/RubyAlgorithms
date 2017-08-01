@@ -90,34 +90,34 @@ class BinarySearchTree
   end
 
   def is_balanced?(tree_node = @root)
-    # return false if tree_node.nil?
-    if tree_node.left
-      left_depth = depth(tree_node.left)
-    else
-      left_depth = 0
-    end
+    left_depth = 0
+    right_depth = 0
 
-    if tree_node.right
-      right_depth = depth(tree_node.right)
-    else
-      right_depth = 0
-    end
+    #changes the depth if tree has left or right nodes
+    left_depth = depth(tree_node.left) if tree_node.left
+    right_depth = depth(tree_node.right) if tree_node.right
 
-    if (right_depth - left_depth).abs > 1
-      return false
-    elsif tree_node.right && tree_node.left
+    #returns false if these depths are more than 1 in diff
+    return false if (right_depth - left_depth).abs > 1
+
+    if tree_node.right && tree_node.left
+      #if both nodes exists returns true is both sides are balanced
       return is_balanced?(tree_node.right) && is_balanced?(tree_node.left)
     else
-      if tree_node.right
-        return is_balanced?(tree_node.right)
-      elsif tree_node.left
-        return is_balanced?(tree_node.left)
-      end
-      return true
+      #conditional check on each side to see if its balanced
+      return is_balanced?(tree_node.right) if tree_node.right
+      return is_balanced?(tree_node.left) if tree_node.left
+      true
     end
   end
 
   def in_order_traversal(tree_node = @root, arr = [])
+    if tree_node
+      in_order_traversal(tree_node.left, arr)
+      arr.push(tree_node.value)
+      in_order_traversal(tree_node.right,arr)
+      arr
+    end
   end
 
 
