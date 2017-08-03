@@ -24,7 +24,6 @@ def hasPathWithGivenSum(t, s)
     else
         # Otherwise check both subtrees
         subSum = s - t.value
-        p "current sum: #{s}, t.value: #{t.value}"
 
         # If we reach a leaf node and sum becomes 0, then
         # return True
