@@ -99,7 +99,7 @@ class BinarySearchTree
     return false if (right_depth - left_depth).abs > 1
 
     if tree_node.right && tree_node.left
-      #if both nodes exists returns true is both sides are balanced
+      #if both nodes exists returns true if both sides are balanced
       return is_balanced?(tree_node.right) && is_balanced?(tree_node.left)
     else
       #conditional check on each side to see if its balanced
