@@ -1,5 +1,14 @@
 require 'binary_search_tree'
 
+def in_order_traversal(tree_node = @root, arr = [])
+  if tree_node
+    in_order_traversal(tree_node.left, arr)
+    arr.push(tree_node.value)
+    in_order_traversal(tree_node.right,arr)
+    arr
+  end
+end
+
 def kth_largest(tree_node, k)
   results = kth_largest_search(tree_node, k, arr = [])
 end
