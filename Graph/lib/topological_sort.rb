@@ -27,3 +27,7 @@ def topological_sort(vertices)
   return [] if sorted.length != vertices.length
   sorted
 end
+
+
+##TIME COMPLEXITY:
+# O(V + E)

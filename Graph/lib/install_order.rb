@@ -11,5 +11,17 @@ require_relative 'topological_sort'
 
 
 def install_order(arr)
-
+  max_id = arr.max_by {|el| el[0]}[0]
+  vertices = {}
+  (1..max_id).to_a.each do |id|
+    vertices[id] = Vertex.new(id)
+  end
+  
+  arr.each do |pack|
+    from = vertices[pack[1]]
+    to = vertices[pack[0]]
+    Edge.new(from, to)
+  end
+  sorted = topological_sort(vertices.values)
+  sorted.map{|v| v.value}
 end
