@@ -1,7 +1,6 @@
 require 'byebug'
 class BinaryMinHeap
    def initialize(&prc)
-
      @store = []
      @prc = prc || Proc.new { |el1, el2| el1 <=> el2 }
    end
@@ -93,7 +92,7 @@ class BinaryMinHeap
   #    end
   #    array
   #  end
-  
+
     def self.heapify_down(array, parent_idx, len = array.length, &prc)
        prc ||= Proc.new { |el1, el2| el1 <=> el2 }
 

@@ -70,6 +70,26 @@ def isMirror(left,right)
    isMirror(left.left, right.right) && isMirror(left.right, right.left)
 end
 
+#///////
+#Check if a binary tree is a BST (where left < parent < right)
+def is_valid_bst(root, min = nil, max = nil)
+    #base case
+    return true if root.nil?
+
+    #make sure that if min is not nil, value is greater than min, and smaller than max (could adapt to allow it to be equal to)
+    if !min.nil? && root.val <= min || !max.nil? && root.val >= max
+        return false
+    end
+
+    #if either left or right are false, return false
+    if !is_valid_bst(root.left, min, root.val) || !is_valid_bst(root.right, root.val, max)
+        return false
+    end
+
+    true
+end
+##Takes O(n) time to check each node
+##Uses O(log n) space on a balanced tree as we may recurse up to the depth of the tree (log n)
 
 # in JS
 # function check(t1, t2) {
