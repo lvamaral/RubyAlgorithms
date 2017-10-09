@@ -88,6 +88,7 @@ def is_valid_bst(root, min = nil, max = nil)
 
     true
 end
+
 ##Takes O(n) time to check each node
 ##Uses O(log n) space on a balanced tree as we may recurse up to the depth of the tree (log n)
 
