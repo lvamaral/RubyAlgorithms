@@ -17,3 +17,17 @@ def can_string_be_palindrome?(string)
     end
     true
 end
+
+# LinkedList Has Cycle (Python)?
+# def has_cycle(head):
+#     if head:
+#         slow = head
+#         fast = head.next
+#         while slow and fast:
+#             slow = slow.next
+#             fast = fast.next.next
+#             if slow == fast:
+#                 return True
+#         return False
+#     else:
+#         return False

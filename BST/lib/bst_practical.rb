@@ -89,6 +89,39 @@ def is_valid_bst(root, min = nil, max = nil)
     true
 end
 
+
+def lowest_common_ancestor(root, p, q)
+    return root if [nil, p, q].index(root)
+    left = lowest_common_ancestor(root.left, p, q)
+    right = lowest_common_ancestor(root.right, p, q)
+    left && right ? root : left || right
+end
+
+# In python, for BT:
+# def lowestCommonAncestor(self, root, p, q):
+#     if root in (None, p, q): return root
+#     left, right = (self.lowestCommonAncestor(kid, p, q)
+#                    for kid in (root.left, root.right))
+#     return root if left and right else left or right
+
+# IN python, for BST:
+# def lowestCommonAncestor(self, root, p, q):
+#     """
+#     :type root: TreeNode
+#     :type p: TreeNode
+#     :type q: TreeNode
+#     :rtype: TreeNode
+#     """
+#     while root:
+#         """If root is bigger than both, check something smaller(left)"""
+#         if p.val < root.val > q.val:
+#             root = root.left
+#         """If root is smaller than both, check something bigger(right)"""
+#         elif p.val > root.val < q.val:
+#             root = root.right
+#         else:
+#             return root
+
 ##Takes O(n) time to check each node
 ##Uses O(log n) space on a balanced tree as we may recurse up to the depth of the tree (log n)
 

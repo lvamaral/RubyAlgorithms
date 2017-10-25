@@ -8,14 +8,14 @@ class Node
   end
 
   def insert(char)
-    return get(char) if have?(char)
+    return get(char) if has?(char)
 
     child = Node.new(char)
     @children << child
     child
   end
 
-  def have?(char)
+  def has?(char)
     @children.each do |c|
       return true if c.data == char
     end
@@ -41,8 +41,7 @@ class Trie
   def insert(word)
     node = @root
     word.size.times do |i|
-      child = node.insert(word[i])
-      node = child
+      node = node.insert(word[i])
     end
     node.is_word = true
   end
@@ -50,7 +49,7 @@ class Trie
   def search(word)
     node = @root
     word.size.times do |i|
-      return false unless node.have?(word[i])
+      return false unless node.has?(word[i])
       node = node.get(word[i])
     end
 
@@ -60,7 +59,7 @@ class Trie
   def starts_with(word)
     node = @root
     word.size.times do |i|
-      return false unless node.have?(word[i])
+      return false unless node.has?(word[i])
       node = node.get(word[i])
     end
 
