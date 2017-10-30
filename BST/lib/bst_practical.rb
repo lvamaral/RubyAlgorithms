@@ -70,8 +70,11 @@ def isMirror(left,right)
    isMirror(left.left, right.right) && isMirror(left.right, right.left)
 end
 
-#///////
+################
 #Check if a binary tree is a BST (where left < parent < right)
+#Strategy: base case is true if root is nil; tree is valid as long as root.val is bigger than min and smaller than max. Recursively call is_valid_bst with the root as the max in the left, and as the min in the right. 
+
+
 def is_valid_bst(root, min = nil, max = nil)
     #base case
     return true if root.nil?
@@ -81,14 +84,19 @@ def is_valid_bst(root, min = nil, max = nil)
         return false
     end
 
-    #if either left or right are false, return false
-    if !is_valid_bst(root.left, min, root.val) || !is_valid_bst(root.right, root.val, max)
-        return false
-    end
+    #if either true is both conditions hold for each side of tree
+    return is_valid_bst(root.left, min, root.val) && is_valid_bst(root.right, root.val, max)
 
-    true
 end
 
+#IN PYTHON:
+# def checkBST(root, min = None, max = None):
+#     if not root:
+#         return True
+#     if (min and root.data <= min) or (max and root.data >= max):
+#         return False
+#     return checkBST(root.left, min, root.data) and checkBST(root.right, root.data, max)
+############
 
 def lowest_common_ancestor(root, p, q)
     return root if [nil, p, q].index(root)
