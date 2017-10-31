@@ -72,7 +72,7 @@ end
 
 ################
 #Check if a binary tree is a BST (where left < parent < right)
-#Strategy: base case is true if root is nil; tree is valid as long as root.val is bigger than min and smaller than max. Recursively call is_valid_bst with the root as the max in the left, and as the min in the right. 
+#Strategy: base case is true if root is nil; tree is valid as long as root.val is bigger than min and smaller than max. Recursively call is_valid_bst with the root as the max in the left, and as the min in the right.
 
 
 def is_valid_bst(root, min = nil, max = nil)
@@ -133,7 +133,7 @@ end
 ##Takes O(n) time to check each node
 ##Uses O(log n) space on a balanced tree as we may recurse up to the depth of the tree (log n)
 
-# in JS
+# in JS, check if Tree is Symmetric
 # function check(t1, t2) {
 #     if (t1 == null && t2 == null) {
 #         return true;
