@@ -1,3 +1,5 @@
+#Find the length of the minimum subarray that needs to be sorted to make the whole array sorted.
+
 def min_sort(arr)
   return 0 if arr.length <= 1
   #Starting at the left, find thing that breaks order
@@ -39,13 +41,6 @@ def min_sort(arr)
     end
   end
 
-  #find last element in half2 which is smaller than max
-  # # arr[end_index+1..-1].reverse_each do |el|
-  #   if el < max
-  #     end_index = arr.index(el)
-  #     break
-  #   end
-  # end
   i = arr.length - 1
   while i > end_index+1
     if arr[i] < max
@@ -73,8 +68,8 @@ arr6 = [1,3,2]
 arr7 = [1,1,1,1,1,-2]
 
 
-# p min_sort(arr)
-# p min_sort(arr2)
-# p min_sort(arr3)
-p min_sort(arr7)
-# p min_sort(arr5)
+# # p min_sort(arr)
+# # p min_sort(arr2)
+# # p min_sort(arr3)
+# p min_sort(arr7)
+# # p min_sort(arr5)
