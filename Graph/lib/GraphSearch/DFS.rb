@@ -1,16 +1,6 @@
-def BFS(t)
-  return [] if t.nil?
-  queue = [t]
-  answer = []
-  until queue.empty?
-    top = queue.shift
-    answer << top.value
-
-    queue << node.left if node.left
-    queue << node.right if node.right
-  end
-  answer
-end
+# Depth First Search (DFS): Start at the root and explore each branch completely before moving on to the next branch.
+# Better for visiting every single node
+# Pre-Order Transversal is a type of DFS; but in DFS you have to keep track of visited nodes to avoid getting stuck in a cyclic loop.
 
 def DFS(t, seen = [])
   seen << t.value
@@ -19,9 +9,7 @@ def DFS(t, seen = [])
   seen
 end
 
-#################
-
-
+#################PROBLEMS involving DFS:
 #Find largest value in each row
 def largestValuesInTreeRows(t)
     return [] if t.nil?
