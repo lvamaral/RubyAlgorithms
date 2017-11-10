@@ -1,6 +1,7 @@
 require_relative 'graph'
 
-# Implementing topological sort using both Khan's and Tarian's algorithms
+# Implementing topological sort using Khan's algorithms
+# Don't need to deal with edges if they have no cost
 
 def topological_sort(vertices)
   sorted = []
@@ -10,7 +11,8 @@ def topological_sort(vertices)
   end
 
   until queue.empty?
-    current = queue.pop
+    # current = queue.pop?
+    current = queue.shift
     sorted << current
 
     current.out_edges.each do |edge|

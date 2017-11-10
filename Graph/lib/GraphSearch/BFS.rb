@@ -7,10 +7,13 @@ def BFS(root)
   return [] if root.nil?
   queue = [root]
   answer = []
+  # seen = Set.new
+  # seen.add(root)
   until queue.empty?
     node = queue.shift
     answer << node.value
     #would extend this for a non Binary Tree graph
+    #Would check if node is not seen before adding to queue
     queue << node.left if node.left
     queue << node.right if node.right
   end

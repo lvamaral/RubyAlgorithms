@@ -23,5 +23,4 @@ class Edge
     @from_vertex = nil
     @to_vertex = nil
   end
-
 end
